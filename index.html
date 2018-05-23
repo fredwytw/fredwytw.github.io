@@ -9,8 +9,19 @@
         <p id="p1"></p>
         <h2>My Account</h2>
         <p id="account"></p>
-        <script src="js/web3_init.js"></script>
         <script>
+            
+            var Web3 = require('web3');
+            // set the provider of web3
+            if (typeof web3 !== 'undefined') {
+                console.debug(web3.currentProvider);
+                console.log("web3 provider setup ok");
+                windows.alert("web3 provider setup ok");
+                web3 = new Web3(web3.currentProvider);
+            } else {
+                window.alert("No currentProvider for web3");
+            }
+
             // Get API version
             var p1 = document.getElementById("p1");
             p1.innerHTML = web3.version.api;

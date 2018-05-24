@@ -17,9 +17,10 @@
                 // Checking if Web3 has been injected by the browser (Mist/MetaMask)
                 if (typeof web3 !== 'undefined') {
                     // Use Mist/MetaMask's provider
-                    web3 = new Web3(web3.currentProvider);
-                                    
-                    //var web3 = new Web3(new Web3.providers.WebsocketProvider("wss://mainnet.infura.io/ws"));
+                    //web3 = new Web3(web3.currentProvider);
+                      
+                    // Use Infura as your web3 provider
+                    var web3 = new Web3(new Web3.providers.WebsocketProvider("wss://mainnet.infura.io/ws"));
 
                 } else {
                 // Handle the case where the user doesn't have web3. Probably
@@ -31,7 +32,7 @@
                 // Now you can start your app & access web3js freely:
                 console.log("StartApp to access web3.js");
 
-                startApp()
+                //startApp()
 
             })
 

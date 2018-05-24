@@ -13,9 +13,10 @@
         <p id="account"></p>
         <script>
             var cryptoZombiesContract;
+            var web3js;
             
             function startApp() {
-                Console.log("Instantiating my Web3js contract");
+                console.log("Instantiating my Web3js contract");
 
                 var cryptoZombiesAddress = "YOUR_CONTRACT_ADDRESS";
                 cryptoZombiesContract = new web3js.eth.Contract(cryptoZombiesABI, cryptoZombiesAddress);

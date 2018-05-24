@@ -12,16 +12,25 @@
         <p id="account"></p>
         <script>
            
-            var Web3 = require('web3');
-            // set the provider of web3
-            if (typeof web3 !== 'undefined') {
-                console.debug(web3.currentProvider);
-                console.log("web3 provider setup ok");
-                window.alert("web3 provider setup ok");
-                web3 = new Web3(web3.currentProvider);
-            } else {
-                window.alert("No currentProvider for web3");
-            }
+            window.addEventListener('load', function() {
+                                   
+                // Checking if Web3 has been injected by the browser (Mist/MetaMask)
+                if (typeof web3 !== 'undefined') {
+                    // Use Mist/MetaMask's provider
+                    web3js = new Web3(web3.currentProvider);
+                } else {
+                // Handle the case where the user doesn't have web3. Probably
+                // show them a message telling them to install Metamask in
+                // order to use our app.
+                    window.alert("No current provider for web3");
+                }
+
+                // Now you can start your app & access web3js freely:
+                    startApp()
+                    cosole.log("StartApp to access web3.js");
+
+            })
+
 
             // Get API version
             var p1 = document.getElementById("p1");

@@ -18,8 +18,8 @@
             function startApp() {
                 console.log("Instantiating my Web3js contract");
 
-                var cryptozombiesAddress = "YOUR_CONTRACT_ADDRESS";
-                cryptozombiesContract = new web3js.eth.Contract(cryptozombiesABI, cryptozombiesAddress);
+                //var cryptozombiesAddress = "YOUR_CONTRACT_ADDRESS";
+                //cryptozombiesContract = new web3js.eth.Contract(cryptozombiesABI, cryptozombiesAddress);
             }
             
            
@@ -49,7 +49,7 @@
 
             // Get API version
             var p1 = document.getElementById("p1");
-            p1.innerHTML = web3js.version.api;
+            p1.innerHTML = web3.version.api;
             // Get my MetaMask account
             var account = document.getElementById("account");
             account.innerHTML = web3js.eth.accounts;

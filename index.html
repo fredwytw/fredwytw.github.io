@@ -3,6 +3,7 @@
     <head>
         <title> fredwytw.github.io </title>
         <script language="javascript" type="text/javascript" src="web3.min.js"></script>
+        <script language="javascript" type="text/javascript" src="cryptozombies_abi.js"></script>
     </head>
     <body>
         
@@ -11,38 +12,46 @@
         <h2>My Account</h2>
         <p id="account"></p>
         <script>
+            var cryptoZombiesContract;
+            
+            function startApp() {
+                Console.log("Instantiating my Web3js contract");
+
+                var cryptoZombiesAddress = "YOUR_CONTRACT_ADDRESS";
+                cryptoZombiesContract = new web3js.eth.Contract(cryptoZombiesABI, cryptoZombiesAddress);
+            }
+            
            
             window.addEventListener('load', function() {
                                    
                 // Checking if Web3 has been injected by the browser (Mist/MetaMask)
                 if (typeof web3 !== 'undefined') {
                     // Use Mist/MetaMask's provider
-                    //web3 = new Web3(web3.currentProvider);
+                    web3js = new Web3(web3.currentProvider);
                       
                     // Use Infura as your web3 provider
-                    var web3 = new Web3(new Web3.providers.WebsocketProvider("wss://mainnet.infura.io/ws"));
+                    //var web3 = new Web3(new Web3.providers.WebsocketProvider("wss://mainnet.infura.io/ws"));
 
                 } else {
-                // Handle the case where the user doesn't have web3. Probably
-                // show them a message telling them to install Metamask in
-                // order to use our app.
+                    // Handle the case where the user doesn't have web3. Probably
+                    // show them a message telling them to install Metamask in
+                    // order to use our app.
                     window.alert("No current provider for web3");
                 }
 
                 // Now you can start your app & access web3js freely:
-                console.log("StartApp to access web3.js");
-
-                //startApp()
+                //console.log("StartApp to access web3.js");
+                startApp()
 
             })
 
 
             // Get API version
             var p1 = document.getElementById("p1");
-            p1.innerHTML = web3.version.api;
+            p1.innerHTML = web3js.version.api;
             // Get my MetaMask account
             var account = document.getElementById("account");
-            account.innerHTML = web3.eth.accounts;
+            account.innerHTML = web3js.eth.accounts;
         </script>
     </body>
 </html>
